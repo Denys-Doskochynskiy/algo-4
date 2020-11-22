@@ -1,16 +1,21 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+import csv
+from typing import List
+from write_read.read_file import read_csv
+from write_read.write import create_write_to_file
 
 
-# Press the green button in the gutter to run the script.
+def main(word_list: List[str]) -> int:
+    word_list.sort(key=lambda len_word: len(len_word))  # asc
+    print(word_list)
+
+    words_dictinary = {}
+    largest_chain = 0
+    current_max = 1
+
+
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    words = read_csv()
+   # create_write_to_file(main(words))
+    print(main(words))
