@@ -5,7 +5,7 @@ from write_read_helper.read_file import read_csv
 def main_test():
     """
     main function to run algorithm
-    :return:
+    :return:max chain from our words
     >>> main(read_csv("input.csv"))
     6
     >>> main(read_csv("input2.csv"))

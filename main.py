@@ -3,6 +3,13 @@ from write_read_helper.read_file import read_csv
 from write_read_helper.write import create_write_to_file
 from algo_word_chain.algo import find_max_chain
 
+"""
+        sort list of word by there length,then 
+        find max chain of this words 
+        :param word_list: list of words
+        :return: our max chain of word
+"""
+
 
 def main(word_list):
     list_word = sorted(word_list, key=len)  # asc

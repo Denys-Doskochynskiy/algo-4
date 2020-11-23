@@ -1,5 +1,11 @@
 import csv
 
+"""
+        get all words from file input№?.csv and enter to array
+                :param filename: name of file to read data from
+        :return: list of words
+"""
+
 
 def read_csv(file):
     word_list = []
@@ -8,5 +14,5 @@ def read_csv(file):
         next(csv_reader)
         for row in csv_reader:
             word_list.append(row[0])
-        #print(word_list)
+        # print(word_list)
     return word_list
