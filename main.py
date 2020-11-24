@@ -1,16 +1,24 @@
-# This is a sample Python script.
+from typing import List
+from write_read_helper.read_file import read_csv
+from write_read_helper.write import create_write_to_file
+from algo_word_chain.algo import find_max_chain
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+"""
+        sort list of word by there length,then 
+        find max chain of this words 
+        :param word_list: list of words
+        :return: our max chain of word
+"""
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def main(word_list):
+    list_word = sorted(word_list, key=len)  # asc
+    words_dictionary = {}
+    current_max = 1
+    return find_max_chain(list_word, words_dictionary, current_max)
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    file = 'input.csv'
+    create_write_to_file(main(read_csv(file)))
+    print(main(read_csv(file)))
