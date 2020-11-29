@@ -1,4 +1,5 @@
 from typing import List
+
 from write_read_helper.read_file import read_csv
 from write_read_helper.write import create_write_to_file
 from algo_word_chain.algo import find_max_chain
@@ -11,11 +12,10 @@ from algo_word_chain.algo import find_max_chain
 """
 
 
-def main(word_list):
-    list_word = sorted(word_list, key=len)  # asc
+def main(word_list: List[str]) -> int:
+    word_list.sort(key=lambda x: len(x))
     words_dictionary = {}
-    current_max = 1
-    return find_max_chain(list_word, words_dictionary, current_max)
+    return find_max_chain(word_list, words_dictionary)
 
 
 if __name__ == '__main__':
