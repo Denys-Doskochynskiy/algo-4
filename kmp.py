@@ -1,7 +1,10 @@
-def lps_array(pattern, M, lps):
+from read_write.read_file import read_from_file, write_to_file
+
+
+def lps_array(pattern, pattern_length, lps):
     len = 0
     i = 1
-    while i < M:
+    while i < pattern_length:
         if pattern[i] == pattern[len]:
             len += 1
             lps[i] = len
@@ -16,37 +19,32 @@ def lps_array(pattern, M, lps):
                 i += 1
 
 
-def kmp_search_in_string(pattern, txt):
-    M = len(pattern)
-    N = len(txt)
-    increment = 0
-    lps = [0] * M
+def kmp_search_in_string(pattern, string):
+    pattern_length = len(pattern)
+    text_length = len(string)
+    lps = [0] * pattern_length
     j = 0
-    lps_array(pattern, M, lps)
-    print(lps)
-
+    result_match_list = []
+    lps_array(pattern, pattern_length, lps)
     i = 0
-    while i < N:
-        increment += 1
-        if pattern[j] == txt[i]:
+    while i < text_length:
+        if pattern[j] == string[i]:
             i += 1
             j += 1
-
-        if j == M:
-            print("Found pattern at index " + str(i - j) + "-" + str(i - j + M - 1))
+        if j == pattern_length:
+            result_match_list.append("[" + str(i - j) + "-" + str(i - j + pattern_length - 1) + "]")
             j = lps[j - 1]
-
-        elif pattern[j] != txt[i]:
+        elif pattern[j] != string[i]:
             if j != 0:
                 j = lps[j - 1]
             else:
                 i += 1
-
-    print(increment)
+    return result_match_list
 
 
 if __name__ == '__main__':
-    pattern = "A"
-    txt = "AAQADAA"
+    result = read_from_file("test.in")
+    pattern = result[1]
+    string = result[0]
 
-    kmp_search_in_string(pattern, txt)
+    write_to_file(kmp_search_in_string(pattern, string), "result")
